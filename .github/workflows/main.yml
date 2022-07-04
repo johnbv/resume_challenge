@@ -1,6 +1,5 @@
 name: Upload Resume Website
 
-
 on:
   push:
     branches:
