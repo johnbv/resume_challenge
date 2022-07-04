@@ -1,4 +1,4 @@
-name: Upload Resume Website
+name: Upload Resume Website1
 
 on:
   push:
@@ -12,7 +12,7 @@ jobs:
       id-token: write
       contents: read
     
-    
+
     steps:
       - name: checkout
         uses: actions/checkout@v2
