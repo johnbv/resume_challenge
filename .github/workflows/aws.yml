@@ -19,7 +19,7 @@ jobs:
     
     steps:
       - name: checkout
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
 
       - name: Configure AWS Credentials
         uses: aws-actions/configure-aws-credentials@v1
@@ -28,16 +28,15 @@ jobs:
           aws-region: ap-southeast-2
 
       - name: Setup Terraform
-        uses: hashicorp/setup-terraform@v2
-
-      - name: Terraform format fmt
-        id: fmt
-        run: terraform fmt -check
-  
+        uses: hashicorp/setup-terraform@v1
 
       - name: Terraform Init
         id: init
         run: terraform init
+
+      - name: Terraform format fmt
+        id: fmt
+        run: terraform fmt -check  
 
       - name: Terraform Validate
         id: validate
@@ -87,7 +86,7 @@ jobs:
             
             </details>
             
-            *Pusher: @${{ github.actor }}, Action: \`${{ github.event_name }}\`, Working Directory: \`${{ env.tf_actions_working_dir }}\`, Workflow: \`${{ github.workflow }}\`*`;
+            *Pusher: @${{ github.actor }}, Action: \`${{ github.event_name }}\*`; 
             
             // 3. If we have a comment, update it, otherwise create a new one
             if (botComment) {
@@ -105,6 +104,10 @@ jobs:
                 body: output
               })
             }     
+      - name: Terraform Plan Status
+        if: steps.plan.outcome == 'failure'
+        working-directory: ./terraform
+        run: exit 1
 
       - name: Terraform Apply
         if: github.ref == 'refs/heads/main' && github.event_name == 'push'
