@@ -5,7 +5,11 @@ terraform {
       version = "~> 4.16"
     }
   }
-
+  backend "s3" {
+    bucket = "johnbriceno.com"
+    key    = "terra.tfstate"
+    region = "ap-southeast-2"
+  }
   required_version = ">= 1.2.0"
 }
 
