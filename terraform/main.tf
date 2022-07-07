@@ -3,8 +3,7 @@ terraform {
     aws = {
       source = "hashicorp/aws"
     }
-  }
-  
+  }  
   backend "s3" {
     bucket = "johnbriceno.com"
     key    = "terra.tfstate"
