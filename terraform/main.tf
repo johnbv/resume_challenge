@@ -9,7 +9,6 @@ terraform {
     key    = "terra.tfstate"
     region = "ap-southeast-2"
   }
-  required_version = ">= 1.2.0"
 }
 
 provider "aws" {
