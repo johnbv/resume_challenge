@@ -3,7 +3,7 @@ terraform {
     aws = {
       source = "hashicorp/aws"
     }
-  }  
+  }
   backend "s3" {
     bucket = "johnbriceno.com"
     key    = "terra.tfstate"
@@ -20,6 +20,6 @@ resource "aws_instance" "app_server" {
   instance_type = "t2.micro"
 
   tags = {
-    Name = "TestEC2"
+    Name = "TestEC2New"
   }
 }
