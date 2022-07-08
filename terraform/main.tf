@@ -15,11 +15,12 @@ provider "aws" {
   region = "ap-southeast-2"
 }
 
-resource "aws_instance" "app_server" {
-  ami           = "ami-07620139298af599e"
-  instance_type = "t2.micro"
+# resource "aws_instance" "app_server" {
+#   ami           = "ami-07620139298af599e"
+#   instance_type = "t2.micro"
 
-  tags = {
-    Name = "TestEC2New2"
-  }
-}
+#   tags = {
+#     Name = "NewEc2"
+#     Name = var.instance_name 
+#   }
+# }
