@@ -5,12 +5,12 @@ RewriteEngine on
 
 #  do not apply to existing directories
 
-RewriteCond % {REQUEST_FILENAME} ! -d
+RewriteCond %{REQUEST_FILENAME} !-d
 
 # Check for file in directory with .html
 
-RewriteCond % {REQUEST_FILENAME}\.html -f
+RewriteCond %{REQUEST_FILENAME}\.html -f
 
 # Here we actually show the page that has de .html
 
-RewriteRule ^ (.*)$ $1.html[NC, L]
+RewriteRule ^(.*)$ $1.html [NC, L]
